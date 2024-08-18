@@ -69,14 +69,12 @@ struct ContentView: View {
         TabView {
             HomeView(taskViewModel: taskViewModel)
                 .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("Home")
+                    Image(systemName: "pencil.circle")
                 }
             
             CalendarView(taskViewModel: taskViewModel)
                 .tabItem {
-                    Image(systemName: "calendar")
-                    Text("Calendar")
+                    Image(systemName: "calendar.circle")
                 }
         }
     }

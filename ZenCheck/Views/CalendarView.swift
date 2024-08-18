@@ -10,17 +10,52 @@ import SwiftUI
 struct CalendarView: View {
     @ObservedObject var taskViewModel: TaskViewModel
     @State private var currentDate = Date()
+    @State private var selectedDate: Date?
+    
+    // Define colors here
+    private let darkGrey = Color(.systemGray6)
+    private let cyan = Color.cyan
     
     var body: some View {
         VStack {
             Text("Calendar")
                 .font(.largeTitle)
                 .padding()
+                .foregroundColor(cyan)
             
-            CalendarGridView(currentDate: $currentDate, taskViewModel: taskViewModel)
+            CalendarGridView(currentDate: $currentDate, selectedDate: $selectedDate, taskViewModel: taskViewModel, darkGrey: darkGrey, cyan: cyan)
+            
+            if let date = selectedDate {
+                VStack {
+                    Text("Tasks for \(date, style: .date)")
+                        .foregroundColor(cyan)
+                        .font(.headline)
+                    
+                    List {
+                        ForEach(taskViewModel.tasksFor(date: date)) { task in
+                            HStack {
+                                Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                    .foregroundColor(task.isCompleted ? cyan : .gray)
+                                Text(task.title)
+                                    .foregroundColor(.white)
+                                Spacer()
+                            }
+                            .padding(.vertical, 10)
+                        }
+                        .listRowBackground(darkGrey)
+                    }
+                    .listStyle(PlainListStyle())
+                }
+                .background(darkGrey)
+            } else {
+                Text("Select a date to view tasks")
+                    .foregroundColor(.gray)
+                    .padding()
+            }
             
             Spacer()
         }
+        .background(darkGrey)
         .navigationTitle("Calendar")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -28,7 +63,11 @@ struct CalendarView: View {
 
 struct CalendarGridView: View {
     @Binding var currentDate: Date
+    @Binding var selectedDate: Date?
     @ObservedObject var taskViewModel: TaskViewModel
+    
+    let darkGrey: Color
+    let cyan: Color
     
     var body: some View {
         let daysInMonth = getDaysInMonth(for: currentDate)
@@ -46,13 +85,16 @@ struct CalendarGridView: View {
         return VStack {
             HStack {
                 Text("<")
+                    .foregroundColor(cyan)
                     .onTapGesture {
                         currentDate = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) ?? currentDate
                     }
                 Spacer()
                 Text(currentDate, style: .date)
+                    .foregroundColor(cyan)
                 Spacer()
                 Text(">")
+                    .foregroundColor(cyan)
                     .onTapGesture {
                         currentDate = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) ?? currentDate
                     }
@@ -67,14 +109,17 @@ struct CalendarGridView: View {
                 ForEach(days) { day in
                     VStack {
                         Text("\(day.dayNumber)")
-                            .foregroundColor(day.hasTasks ? (day.isCompleted ? .green : .blue) : .gray)
+                            .foregroundColor(day.hasTasks ? (day.isCompleted ? cyan : .orange) : .gray)
                         if day.hasTasks {
                             Circle()
-                                .fill(day.isCompleted ? Color.green : Color.blue)
+                                .fill(day.isCompleted ? cyan : .orange)
                                 .frame(width: 8, height: 8)
                         }
                     }
                     .frame(maxWidth: .infinity)
+                    .onTapGesture {
+                        selectedDate = day.date
+                    }
                 }
             }
         }
