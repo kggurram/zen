@@ -10,8 +10,7 @@ struct HomeView: View {
     @State private var newTaskTitle: String = ""
     @ObservedObject var taskViewModel: TaskViewModel
     @State private var currentDate = Date()
-    @Namespace private var animationNamespace // Namespace for matched geometry effect
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -19,6 +18,7 @@ struct HomeView: View {
                     Text(currentDateFormatted)
                         .font(.largeTitle)
                         .fontWeight(.bold)
+                        .padding(.top)
                         .foregroundColor(cyan)
                     
                     HStack {
@@ -30,7 +30,7 @@ struct HomeView: View {
                             .foregroundColor(.gray)
                         
                         Button(action: {
-                            withAnimation(.easeInOut(duration: 0.3)) {
+                            withAnimation {
                                 taskViewModel.clearTasks(for: currentDate)
                             }
                         }) {
@@ -43,6 +43,7 @@ struct HomeView: View {
                     }
                     .padding(.vertical, 5)
                 }
+                .padding(.top, 10)
                 .padding(.horizontal)
                 
                 // Custom TextField with dynamic underline
@@ -58,10 +59,14 @@ struct HomeView: View {
                                 self.underlineWidth = width
                             }
                         
-                        TextField("Add new task", text: $newTaskTitle)
-                            .foregroundColor(.white)
-                            .padding(.vertical, 10)
-                            .background(Color.clear)
+                        TextField("Add new Zen", text: $newTaskTitle, onCommit: {
+                            addNewTask()
+                        })
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .frame(height: 68)
+                        .background(Color.clear)
+
                     }
                     .overlay(
                         Rectangle()
@@ -75,50 +80,57 @@ struct HomeView: View {
                     .padding(.horizontal)
                 }
                 
-                Button(action: {
-                    if !newTaskTitle.isEmpty {
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.3)) {
-                            taskViewModel.addTask(title: newTaskTitle, for: currentDate)
-                            newTaskTitle = ""
-                            underlineWidth = 0 // Reset the underline width when a new task is added
-                        }
-                    }
-                }) {
-                    Text("Add Task")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(cyan)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                }
+//                Button(action: {
+//                    if !newTaskTitle.isEmpty {
+//                        withAnimation {
+//                            taskViewModel.addTask(title: newTaskTitle, for: currentDate)
+//                            newTaskTitle = ""
+//                            underlineWidth = 0 // Reset the underline width when a new task is added
+//                        }
+//                    }
+//                }) {
+//                    Text("Add Zen")
+//                        .frame(maxWidth: .infinity)
+//                        .padding()
+//                        .background(cyan)
+//                        .foregroundColor(.white)
+//                        .cornerRadius(10)
+//                        .padding(.horizontal)
+//                }
                 
                 List {
                     ForEach(taskViewModel.tasksFor(date: currentDate)) { task in
-                        HStack {
+                        HStack(alignment: .top, spacing: 10) {  // Adjusted alignment and spacing
                             Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                                 .foregroundColor(task.isCompleted ? cyan : .gray)
-                                .scaleEffect(task.isCompleted ? 1.2 : 1.0)
-                                .animation(.spring(response: 0.3, dampingFraction: 0.5).repeatCount(1, autoreverses: true), value: task.isCompleted)
+                                .font(.system(size: 20))
                                 .onTapGesture {
-                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.5)) {
+                                    withAnimation {
                                         taskViewModel.toggleTaskCompletion(task: task, for: currentDate)
                                     }
                                 }
                             
-                            TextField("", text: Binding(
-                                get: { task.title },
-                                set: { newValue in
-                                    withAnimation(.easeInOut(duration: 0.3)) {
-                                        taskViewModel.editTask(task: task, newTitle: newValue, for: currentDate)
-                                    }
-                                }))
-                            .foregroundColor(.white)
+                            VStack(alignment: .leading, spacing: 0) {  // Reduced spacing inside VStack
+                                Text(task.title)
+                                    .foregroundColor(.white)
+                                    .lineLimit(nil)  // Allow text to wrap
+                                    .fixedSize(horizontal: false, vertical: true)  // Ensure the text wraps correctly
+                                
+                                // TextField overlay for editing the task
+                                TextField("", text: Binding(
+                                    get: { task.title },
+                                    set: { newValue in
+                                        withAnimation {
+                                            taskViewModel.editTask(task: task, newTitle: newValue, for: currentDate)
+                                        }
+                                    }))
+                                .opacity(0)  // Make the text field transparent but still tappable
+                            }
                             
                             Spacer()
                             
                             Button(action: {
-                                withAnimation(.easeInOut(duration: 0.4)) {
+                                withAnimation {
                                     taskViewModel.deleteTask(task: task, for: currentDate)
                                 }
                             }) {
@@ -127,14 +139,12 @@ struct HomeView: View {
                             }
                             .buttonStyle(BorderlessButtonStyle())
                         }
-                        .padding(.vertical, 10)
+                        .padding(.vertical, 0)  // Reduced vertical padding
                         .listRowSeparator(.hidden)
                         .listRowBackground(darkGrey)
-                        .transition(.asymmetric(insertion: .scale(scale: 0.8).combined(with: .opacity), removal: .scale(scale: 0.8).combined(with: .opacity)))
-                        .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.3), value: task.id)
                     }
                     .onDelete(perform: { indexSet in
-                        withAnimation(.easeInOut(duration: 0.4)) {
+                        withAnimation {
                             for index in indexSet {
                                 let task = taskViewModel.tasksFor(date: currentDate)[index]
                                 taskViewModel.deleteTask(task: task, for: currentDate)
@@ -144,7 +154,10 @@ struct HomeView: View {
                 }
                 .listStyle(PlainListStyle())
             }
+            .padding(.horizontal, 10) // Use padding, but not excessively
+            .frame(maxWidth: .infinity) // Ensure the VStack uses the full width
             .background(darkGrey)
+            .edgesIgnoringSafeArea(.horizontal)
             .navigationBarHidden(true)
             .onAppear {
                 currentDate = Date()
@@ -168,6 +181,16 @@ struct HomeView: View {
     
     private var cyan: Color {
         return Color.cyan
+    }
+    
+    private func addNewTask() {
+        if !newTaskTitle.isEmpty {
+            withAnimation {
+                taskViewModel.addTask(title: newTaskTitle, for: currentDate)
+                newTaskTitle = ""  // Reset the text field after adding the task
+                underlineWidth = 0  // Reset the underline width when a new task is added
+            }
+        }
     }
 }
 

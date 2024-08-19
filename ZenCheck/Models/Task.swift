@@ -18,4 +18,3 @@ struct Task: Identifiable, Codable {
         self.isCompleted = isCompleted
     }
 }
-

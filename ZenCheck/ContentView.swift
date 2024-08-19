@@ -69,14 +69,21 @@ struct ContentView: View {
         TabView {
             HomeView(taskViewModel: taskViewModel)
                 .tabItem {
-                    Image(systemName: "pencil.circle")
+                    Image(systemName: "house.fill")
                 }
+            
             
             CalendarView(taskViewModel: taskViewModel)
                 .tabItem {
-                    Image(systemName: "calendar.circle")
+                    Image(systemName: "calendar")
                 }
+                
         }
+        .padding(.bottom, -10) // Use negative padding to bring the icons down
+        .edgesIgnoringSafeArea(.all) // Ignore safe areas to let the icons reach the bottom of the screen
+            
+        .accentColor(.cyan) // Set the tab bar color to cyan to match your color scheme
+        
     }
 }
 
@@ -85,3 +92,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
+

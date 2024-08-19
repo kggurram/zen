@@ -19,6 +19,8 @@
 		CA882DEA2C718C76007B7B9A /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DE92C718C76007B7B9A /* TaskViewModel.swift */; };
 		CA882DEC2C718CC5007B7B9A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DEB2C718CC5007B7B9A /* HomeView.swift */; };
 		CA882DEE2C718CE8007B7B9A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DED2C718CE8007B7B9A /* CalendarView.swift */; };
+		CAFD49582C72995300CED77C /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFD49572C72995300CED77C /* SummaryView.swift */; };
+		CAFD495B2C7299C500CED77C /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFD495A2C7299C500CED77C /* OpenAIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		CA882DE92C718C76007B7B9A /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		CA882DEB2C718CC5007B7B9A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CA882DED2C718CE8007B7B9A /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		CAFD49572C72995300CED77C /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		CAFD495A2C7299C500CED77C /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 		CA882DB62C7189C5007B7B9A /* ZenCheck */ = {
 			isa = PBXGroup;
 			children = (
+				CAFD49592C7299B300CED77C /* Services */,
 				CA882DE62C718C37007B7B9A /* Resources */,
 				CA882DE52C718C2C007B7B9A /* ViewModels */,
 				CA882DE42C718C27007B7B9A /* Views */,
@@ -155,6 +160,7 @@
 			children = (
 				CA882DEB2C718CC5007B7B9A /* HomeView.swift */,
 				CA882DED2C718CE8007B7B9A /* CalendarView.swift */,
+				CAFD49572C72995300CED77C /* SummaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +178,14 @@
 			children = (
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CAFD49592C7299B300CED77C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CAFD495A2C7299C500CED77C /* OpenAIService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +323,8 @@
 				CA882DBA2C7189C5007B7B9A /* ContentView.swift in Sources */,
 				CA882DBC2C7189C5007B7B9A /* Item.swift in Sources */,
 				CA882DEC2C718CC5007B7B9A /* HomeView.swift in Sources */,
+				CAFD495B2C7299C500CED77C /* OpenAIService.swift in Sources */,
+				CAFD49582C72995300CED77C /* SummaryView.swift in Sources */,
 				CA882DEA2C718C76007B7B9A /* TaskViewModel.swift in Sources */,
 				CA882DB82C7189C5007B7B9A /* ZenCheckApp.swift in Sources */,
 			);
@@ -474,6 +490,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ZenCheck/Preview Content\"";
+				DEVELOPMENT_TEAM = 82M85JU52Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
@@ -504,6 +521,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ZenCheck/Preview Content\"";
+				DEVELOPMENT_TEAM = 82M85JU52Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";

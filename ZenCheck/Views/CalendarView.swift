@@ -14,28 +14,104 @@ struct CalendarView: View {
     
     // Define colors here
     private let darkGrey = Color(.systemGray6)
+    private let green = Color.green
+    private let orange = Color.orange
     private let cyan = Color.cyan
     
     var body: some View {
         VStack {
-            Text("Calendar")
-                .font(.largeTitle)
-                .padding()
-                .foregroundColor(cyan)
+            HStack {
+                Text("Zen Tracker")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.top)
+                    .foregroundColor(cyan)
+                Spacer() // Pushes the title to the left
+            }
+            .padding(.top, 10)
+            .padding(.horizontal) // Apply horizontal padding
+            // Adjusted HStack for Month and Year with Arrows and Improved Spacing
+            HStack(spacing: 20) {
+                HStack(spacing: 5) {
+                    Button(action: {
+                        withAnimation {
+                            currentDate = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) ?? currentDate
+                        }
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(cyan)
+                    }
+                    
+                    Text(currentMonthFormatted)
+                        .font(.headline)
+                        .foregroundColor(cyan)
+                    
+                    Button(action: {
+                        withAnimation {
+                            currentDate = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) ?? currentDate
+                        }
+                    }) {
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(cyan)
+                    }
+                }
+                
+                Spacer()
+                
+                HStack(spacing: 5) {
+                    Button(action: {
+                        withAnimation {
+                            currentDate = Calendar.current.date(byAdding: .year, value: -1, to: currentDate) ?? currentDate
+                        }
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(cyan)
+                    }
+                    
+                    Text(currentYearFormatted)
+                        .font(.headline)
+                        .foregroundColor(cyan)
+                    
+                    Button(action: {
+                        withAnimation {
+                            currentDate = Calendar.current.date(byAdding: .year, value: 1, to: currentDate) ?? currentDate
+                        }
+                    }) {
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(cyan)
+                    }
+                }
+            }
+            .padding(.horizontal, 30) // Adjusted horizontal padding
+            .padding(.top, 5) // Reduced top padding to move closer to the calendar grid
+            .padding(.bottom, 5) // Reduced bottom padding to move closer to the calendar grid
             
-            CalendarGridView(currentDate: $currentDate, selectedDate: $selectedDate, taskViewModel: taskViewModel, darkGrey: darkGrey, cyan: cyan)
+            CalendarGridView(currentDate: $currentDate, selectedDate: $selectedDate, taskViewModel: taskViewModel, darkGrey: darkGrey, green: green, orange: orange)
+                .gesture(DragGesture()
+                            .onEnded { value in
+                                if value.translation.width < 0 { // Swipe left
+                                    withAnimation {
+                                        currentDate = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) ?? currentDate
+                                    }
+                                } else if value.translation.width > 0 { // Swipe right
+                                    withAnimation {
+                                        currentDate = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) ?? currentDate
+                                    }
+                                }
+                            })
             
             if let date = selectedDate {
                 VStack {
-                    Text("Tasks for \(date, style: .date)")
+                    Text("\(date, style: .date) Zen List")
                         .foregroundColor(cyan)
                         .font(.headline)
                     
                     List {
                         ForEach(taskViewModel.tasksFor(date: date)) { task in
-                            HStack {
+                            HStack(alignment: .top, spacing: 10) {
                                 Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                                     .foregroundColor(task.isCompleted ? cyan : .gray)
+                                    .font(.system(size: 20))
                                 Text(task.title)
                                     .foregroundColor(.white)
                                 Spacer()
@@ -43,21 +119,51 @@ struct CalendarView: View {
                             .padding(.vertical, 10)
                         }
                         .listRowBackground(darkGrey)
+                        .listRowSeparator(.hidden) // Hide the separator lines between tasks
                     }
                     .listStyle(PlainListStyle())
                 }
                 .background(darkGrey)
             } else {
-                Text("Select a date to view tasks")
+                Text("Select a date to check your Zen")
                     .foregroundColor(.gray)
                     .padding()
             }
             
             Spacer()
         }
+        .padding(.horizontal, 10) // Use padding, but not excessively
+        .frame(maxWidth: .infinity) // Ensure the VStack uses the full width
         .background(darkGrey)
-        .navigationTitle("Calendar")
-        .navigationBarTitleDisplayMode(.inline)
+        .edgesIgnoringSafeArea(.horizontal)
+        .navigationBarHidden(true)
+    }
+    
+    private var currentMonth: Int {
+        Calendar.current.component(.month, from: currentDate)
+    }
+    
+    private var currentYear: Int {
+        Calendar.current.component(.year, from: currentDate)
+    }
+    
+    private var currentMonthFormatted: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM" // Format to show only Month
+        return formatter.string(from: currentDate)
+    }
+    
+    private var currentYearFormatted: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy" // Format to show only Year
+        return formatter.string(from: currentDate)
+    }
+    
+    private func getDate(month: Int, year: Int) -> Date {
+        var components = DateComponents()
+        components.month = month
+        components.year = year
+        return Calendar.current.date(from: components) ?? Date()
     }
 }
 
@@ -67,7 +173,8 @@ struct CalendarGridView: View {
     @ObservedObject var taskViewModel: TaskViewModel
     
     let darkGrey: Color
-    let cyan: Color
+    let green: Color
+    let orange: Color
     
     var body: some View {
         let daysInMonth = getDaysInMonth(for: currentDate)
@@ -83,43 +190,19 @@ struct CalendarGridView: View {
         let leadingEmptyCells = firstDayOfMonth - 1
         
         return VStack {
-            HStack {
-                Text("<")
-                    .foregroundColor(cyan)
-                    .onTapGesture {
-                        currentDate = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) ?? currentDate
-                    }
-                Spacer()
-                Text(currentDate, style: .date)
-                    .foregroundColor(cyan)
-                Spacer()
-                Text(">")
-                    .foregroundColor(cyan)
-                    .onTapGesture {
-                        currentDate = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) ?? currentDate
-                    }
-            }
-            .padding()
-            
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7)) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 15) {
                 ForEach(0..<leadingEmptyCells, id: \.self) { _ in
                     Text("")
                 }
                 
                 ForEach(days) { day in
-                    VStack {
-                        Text("\(day.dayNumber)")
-                            .foregroundColor(day.hasTasks ? (day.isCompleted ? cyan : .orange) : .gray)
-                        if day.hasTasks {
-                            Circle()
-                                .fill(day.isCompleted ? cyan : .orange)
-                                .frame(width: 8, height: 8)
+                    Text("\(day.dayNumber)")
+                        .foregroundColor(day.hasTasks ? (day.isCompleted ? green : orange) : .gray)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .onTapGesture {
+                            selectedDate = day.date
                         }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .onTapGesture {
-                        selectedDate = day.date
-                    }
                 }
             }
         }
