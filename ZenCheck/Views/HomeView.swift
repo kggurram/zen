@@ -1,9 +1,3 @@
-//
-//  HomeView.swift
-//  ZenCheck
-//
-//  Created by Karthik Gurram on 2024-08-17.
-//
 import SwiftUI
 
 struct HomeView: View {
@@ -61,6 +55,7 @@ struct HomeView: View {
                         
                         TextField("Add new Zen", text: $newTaskTitle, onCommit: {
                             addNewTask()
+                            newTaskTitle = ""
                         })
                         .foregroundColor(.white)
                         .padding(.vertical, 10)
@@ -100,7 +95,7 @@ struct HomeView: View {
                 
                 List {
                     ForEach(taskViewModel.tasksFor(date: currentDate)) { task in
-                        HStack(alignment: .top, spacing: 10) {  // Adjusted alignment and spacing
+                        HStack(alignment: .top, spacing: 10) {
                             Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                                 .foregroundColor(task.isCompleted ? cyan : .gray)
                                 .font(.system(size: 20))
@@ -110,13 +105,8 @@ struct HomeView: View {
                                     }
                                 }
                             
-                            VStack(alignment: .leading, spacing: 0) {  // Reduced spacing inside VStack
-                                Text(task.title)
-                                    .foregroundColor(.white)
-                                    .lineLimit(nil)  // Allow text to wrap
-                                    .fixedSize(horizontal: false, vertical: true)  // Ensure the text wraps correctly
-                                
-                                // TextField overlay for editing the task
+                            VStack(alignment: .leading, spacing: 0) {
+                                // The TextField for editing the task
                                 TextField("", text: Binding(
                                     get: { task.title },
                                     set: { newValue in
@@ -124,7 +114,10 @@ struct HomeView: View {
                                             taskViewModel.editTask(task: task, newTitle: newValue, for: currentDate)
                                         }
                                     }))
-                                .opacity(0)  // Make the text field transparent but still tappable
+                                .foregroundColor(.white)
+                                .lineLimit(nil)  // Allow text to wrap to multiple lines
+                                .fixedSize(horizontal: false, vertical: true)  // Ensure the text wraps correctly
+                                
                             }
                             
                             Spacer()
@@ -152,7 +145,10 @@ struct HomeView: View {
                         }
                     })
                 }
+
+
                 .listStyle(PlainListStyle())
+
             }
             .padding(.horizontal, 10) // Use padding, but not excessively
             .frame(maxWidth: .infinity) // Ensure the VStack uses the full width
@@ -187,8 +183,11 @@ struct HomeView: View {
         if !newTaskTitle.isEmpty {
             withAnimation {
                 taskViewModel.addTask(title: newTaskTitle, for: currentDate)
-                newTaskTitle = ""  // Reset the text field after adding the task
-                underlineWidth = 0  // Reset the underline width when a new task is added
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        newTaskTitle = ""  // Reset the text field after adding the task
+                        underlineWidth = 0  // Reset the underline width when a new task is added
+                    
+                }
             }
         }
     }

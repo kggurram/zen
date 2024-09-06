@@ -1,65 +1,3 @@
-////
-////  ContentView.swift
-////  ZenCheck
-////
-////  Created by Karthik Gurram on 2024-08-17.
-////
-//
-//import SwiftUI
-//import SwiftData
-//
-//struct ContentView: View {
-//    @Environment(\.modelContext) private var modelContext
-//    @Query private var items: [Item]
-//
-//    var body: some View {
-//        NavigationSplitView {
-//            List {
-//                ForEach(items) { item in
-//                    NavigationLink {
-//                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-//                    } label: {
-//                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-//                    }
-//                }
-//                .onDelete(perform: deleteItems)
-//            }
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    EditButton()
-//                }
-//                ToolbarItem {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
-//            }
-//        } detail: {
-//            Text("Select an item")
-//        }
-//    }
-//
-//    private func addItem() {
-//        withAnimation {
-//            let newItem = Item(timestamp: Date())
-//            modelContext.insert(newItem)
-//        }
-//    }
-//
-//    private func deleteItems(offsets: IndexSet) {
-//        withAnimation {
-//            for index in offsets {
-//                modelContext.delete(items[index])
-//            }
-//        }
-//    }
-//}
-//
-//#Preview {
-//    ContentView()
-//        .modelContainer(for: Item.self, inMemory: true)
-//}
-
 import SwiftUI
 
 struct ContentView: View {
@@ -69,19 +7,25 @@ struct ContentView: View {
         TabView {
             HomeView(taskViewModel: taskViewModel)
                 .tabItem {
-                    Image(systemName: "house.fill")
+                    VStack{
+                        Image(systemName: "checkmark.circle.fill")
+//                        Text("Home")
+                    }
+                    
+                    
                 }
-            
-            
+
             CalendarView(taskViewModel: taskViewModel)
                 .tabItem {
                     Image(systemName: "calendar")
+//                    Text("Calendar")
                 }
-                
+            AnalyticsView(taskViewModel: taskViewModel)
+                .tabItem {
+                    Image(systemName: "chart.line.uptrend.xyaxis")
+//                    Text("Analytics")
+                }
         }
-        .padding(.bottom, -10) // Use negative padding to bring the icons down
-        .edgesIgnoringSafeArea(.all) // Ignore safe areas to let the icons reach the bottom of the screen
-            
         .accentColor(.cyan) // Set the tab bar color to cyan to match your color scheme
         
     }

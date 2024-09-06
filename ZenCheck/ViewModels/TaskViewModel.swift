@@ -14,7 +14,7 @@ class TaskViewModel: ObservableObject {
     private let tasksKey = "tasksByDate"
     
     func addTask(title: String, for date: Date) {
-        let newTask = Task(title: title)
+        let newTask = Task(title: title, date: date)  // Assign the creation date to the task
         let dateString = dateFormatter.string(from: date)
         
         if tasksByDate[dateString] != nil {
@@ -24,6 +24,23 @@ class TaskViewModel: ObservableObject {
         }
         saveTasks()
     }
+
+
+    func getTasks(from startDate: Date, to endDate: Date) -> [Task] {
+        let tasks = tasksByDate.flatMap { $0.value } // Flatten the dictionary to get all tasks
+        return tasks.filter { $0.date >= startDate && $0.date <= endDate } // Filter by date range
+    }
+
+    
+    func allTasks() -> [Task] {
+            var allTasks: [Task] = []
+            
+            for (_, tasks) in tasksByDate {
+                allTasks.append(contentsOf: tasks)
+            }
+            
+            return allTasks
+        }
     
     func toggleTaskCompletion(task: Task, for date: Date) {
         let dateString = dateFormatter.string(from: date)
@@ -42,6 +59,7 @@ class TaskViewModel: ObservableObject {
             saveTasks()
         }
     }
+
     
     func deleteTask(task: Task, for date: Date) {
         let dateString = dateFormatter.string(from: date)

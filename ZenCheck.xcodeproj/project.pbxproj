@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA4E20442C8A5D9E00DA1E01 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E20432C8A5D9E00DA1E01 /* AnalyticsView.swift */; };
 		CA882DB82C7189C5007B7B9A /* ZenCheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DB72C7189C5007B7B9A /* ZenCheckApp.swift */; };
 		CA882DBA2C7189C5007B7B9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DB92C7189C5007B7B9A /* ContentView.swift */; };
 		CA882DBC2C7189C5007B7B9A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DBB2C7189C5007B7B9A /* Item.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA4E20432C8A5D9E00DA1E01 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		CA882DB42C7189C5007B7B9A /* ZenCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA882DB72C7189C5007B7B9A /* ZenCheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenCheckApp.swift; sourceTree = "<group>"; };
 		CA882DB92C7189C5007B7B9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				CA882DEB2C718CC5007B7B9A /* HomeView.swift */,
 				CA882DED2C718CE8007B7B9A /* CalendarView.swift */,
 				CAFD49572C72995300CED77C /* SummaryView.swift */,
+				CA4E20432C8A5D9E00DA1E01 /* AnalyticsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				CA882DE82C718C55007B7B9A /* Task.swift in Sources */,
 				CA882DEE2C718CE8007B7B9A /* CalendarView.swift in Sources */,
 				CA882DBA2C7189C5007B7B9A /* ContentView.swift in Sources */,
+				CA4E20442C8A5D9E00DA1E01 /* AnalyticsView.swift in Sources */,
 				CA882DBC2C7189C5007B7B9A /* Item.swift in Sources */,
 				CA882DEC2C718CC5007B7B9A /* HomeView.swift in Sources */,
 				CAFD495B2C7299C500CED77C /* OpenAIService.swift in Sources */,

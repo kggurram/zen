@@ -1,10 +1,3 @@
-//
-//  CalendarView.swift
-//  ZenCheck
-//
-//  Created by Karthik Gurram on 2024-08-17.
-//
-
 import SwiftUI
 
 struct CalendarView: View {
@@ -116,7 +109,7 @@ struct CalendarView: View {
                                     .foregroundColor(.white)
                                 Spacer()
                             }
-                            .padding(.vertical, 10)
+                            .padding(.vertical, 5)
                         }
                         .listRowBackground(darkGrey)
                         .listRowSeparator(.hidden) // Hide the separator lines between tasks
