@@ -40,44 +40,46 @@ struct AnalyticsView: View {
 
             if !completedTrendData.isEmpty || !incompleteTrendData.isEmpty {
                 Chart {
-                    // Completed tasks line
+                    // Completed tasks line and points
                     if completedTrendData.count > 1 {
                         ForEach(completedTrendData) { completionTrend in
                             LineMark(
                                 x: .value("Date", completionTrend.date, unit: .day),
-                                y: .value("Completed Tasks", completionTrend.completedTasks)
+                                y: .value("Completed Tasks", completionTrend.completedTasks),
+                                series: .value("Task Status", "Completed") // Series for completed tasks
                             )
                             .foregroundStyle(green)
                             .interpolationMethod(.catmullRom)
                         }
                     }
 
-                    // Incomplete tasks line
+                    ForEach(completedTrendData) { completionTrend in
+                        PointMark(
+                            x: .value("Date", completionTrend.date, unit: .day),
+                            y: .value("Completed Tasks", completionTrend.completedTasks)
+                        
+                        )
+                        .foregroundStyle(green)
+                    }
+
+                    // Incomplete tasks line and points
                     if incompleteTrendData.count > 1 {
                         ForEach(incompleteTrendData) { incompleteTrend in
                             LineMark(
                                 x: .value("Date", incompleteTrend.date, unit: .day),
-                                y: .value("Incomplete Tasks", incompleteTrend.incompleteTasks)
+                                y: .value("Incomplete Tasks", incompleteTrend.incompleteTasks),
+                                series: .value("Task Status", "Incomplete") // Series for incomplete tasks
                             )
                             .foregroundStyle(orange)
                             .interpolationMethod(.catmullRom)
                         }
                     }
 
-                    // Points for completed tasks
-                    ForEach(completedTrendData) { completionTrend in
-                        PointMark(
-                            x: .value("Date", completionTrend.date, unit: .day),
-                            y: .value("Completed Tasks", completionTrend.completedTasks)
-                        )
-                        .foregroundStyle(green)
-                    }
-
-                    // Points for incomplete tasks (only if there are incomplete tasks)
-                    ForEach(incompleteTrendData.filter { $0.incompleteTasks > 0 }) { incompleteTrend in
+                    ForEach(incompleteTrendData) { incompleteTrend in
                         PointMark(
                             x: .value("Date", incompleteTrend.date, unit: .day),
                             y: .value("Incomplete Tasks", incompleteTrend.incompleteTasks)
+                            
                         )
                         .foregroundStyle(orange)
                     }
@@ -90,15 +92,12 @@ struct AnalyticsView: View {
                         AxisTick()
                         AxisValueLabel() {
                             if let dateValue = value.as(Date.self) {
-                                Text(dateValue.formatted(.dateTime.day().month().year()))
+                                Text(dateValue.formatted(.dateTime.day().month())) // Short format for day and month
                                     .font(.caption)
                             }
                         }
                     }
                 }
-
-
-
 
             }
 
