@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class ZenCheckUITestsLaunchTests: XCTestCase {
+final class ZenUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

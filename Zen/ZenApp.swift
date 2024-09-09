@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct ZenCheckApp: App {
+struct ZenApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,

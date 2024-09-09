@@ -6,9 +6,9 @@
 //
 
 import XCTest
-@testable import ZenCheck
+@testable import Zen
 
-final class ZenCheckTests: XCTestCase {
+final class ZenTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

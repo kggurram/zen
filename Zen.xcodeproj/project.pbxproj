@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		CA4E20442C8A5D9E00DA1E01 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E20432C8A5D9E00DA1E01 /* AnalyticsView.swift */; };
-		CA882DB82C7189C5007B7B9A /* ZenCheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DB72C7189C5007B7B9A /* ZenCheckApp.swift */; };
+		CA882DB82C7189C5007B7B9A /* ZenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DB72C7189C5007B7B9A /* ZenApp.swift */; };
 		CA882DBA2C7189C5007B7B9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DB92C7189C5007B7B9A /* ContentView.swift */; };
 		CA882DBC2C7189C5007B7B9A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DBB2C7189C5007B7B9A /* Item.swift */; };
 		CA882DBE2C7189C8007B7B9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA882DBD2C7189C8007B7B9A /* Assets.xcassets */; };
 		CA882DC12C7189C8007B7B9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA882DC02C7189C8007B7B9A /* Preview Assets.xcassets */; };
 		CA882DCB2C7189C8007B7B9A /* ZenCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DCA2C7189C8007B7B9A /* ZenCheckTests.swift */; };
-		CA882DD52C7189C8007B7B9A /* ZenCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DD42C7189C8007B7B9A /* ZenCheckUITests.swift */; };
-		CA882DD72C7189C8007B7B9A /* ZenCheckUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DD62C7189C8007B7B9A /* ZenCheckUITestsLaunchTests.swift */; };
+		CA882DD52C7189C8007B7B9A /* ZenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DD42C7189C8007B7B9A /* ZenUITests.swift */; };
+		CA882DD72C7189C8007B7B9A /* ZenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DD62C7189C8007B7B9A /* ZenUITestsLaunchTests.swift */; };
 		CA882DE82C718C55007B7B9A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DE72C718C55007B7B9A /* Task.swift */; };
 		CA882DEA2C718C76007B7B9A /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DE92C718C76007B7B9A /* TaskViewModel.swift */; };
 		CA882DEC2C718CC5007B7B9A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA882DEB2C718CC5007B7B9A /* HomeView.swift */; };
@@ -43,17 +43,17 @@
 
 /* Begin PBXFileReference section */
 		CA4E20432C8A5D9E00DA1E01 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
-		CA882DB42C7189C5007B7B9A /* ZenCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA882DB72C7189C5007B7B9A /* ZenCheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenCheckApp.swift; sourceTree = "<group>"; };
+		CA882DB42C7189C5007B7B9A /* Zen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA882DB72C7189C5007B7B9A /* ZenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenApp.swift; sourceTree = "<group>"; };
 		CA882DB92C7189C5007B7B9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CA882DBB2C7189C5007B7B9A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CA882DBD2C7189C8007B7B9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA882DC02C7189C8007B7B9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CA882DC62C7189C8007B7B9A /* ZenCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA882DC62C7189C8007B7B9A /* ZenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA882DCA2C7189C8007B7B9A /* ZenCheckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenCheckTests.swift; sourceTree = "<group>"; };
-		CA882DD02C7189C8007B7B9A /* ZenCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA882DD42C7189C8007B7B9A /* ZenCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenCheckUITests.swift; sourceTree = "<group>"; };
-		CA882DD62C7189C8007B7B9A /* ZenCheckUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenCheckUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CA882DD02C7189C8007B7B9A /* ZenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA882DD42C7189C8007B7B9A /* ZenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenUITests.swift; sourceTree = "<group>"; };
+		CA882DD62C7189C8007B7B9A /* ZenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CA882DE72C718C55007B7B9A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		CA882DE92C718C76007B7B9A /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		CA882DEB2C718CC5007B7B9A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -90,9 +90,9 @@
 		CA882DAB2C7189C5007B7B9A = {
 			isa = PBXGroup;
 			children = (
-				CA882DB62C7189C5007B7B9A /* ZenCheck */,
-				CA882DC92C7189C8007B7B9A /* ZenCheckTests */,
-				CA882DD32C7189C8007B7B9A /* ZenCheckUITests */,
+				CA882DB62C7189C5007B7B9A /* Zen */,
+				CA882DC92C7189C8007B7B9A /* ZenTests */,
+				CA882DD32C7189C8007B7B9A /* ZenUITests */,
 				CA882DB52C7189C5007B7B9A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,14 +100,14 @@
 		CA882DB52C7189C5007B7B9A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CA882DB42C7189C5007B7B9A /* ZenCheck.app */,
-				CA882DC62C7189C8007B7B9A /* ZenCheckTests.xctest */,
-				CA882DD02C7189C8007B7B9A /* ZenCheckUITests.xctest */,
+				CA882DB42C7189C5007B7B9A /* Zen.app */,
+				CA882DC62C7189C8007B7B9A /* ZenTests.xctest */,
+				CA882DD02C7189C8007B7B9A /* ZenUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CA882DB62C7189C5007B7B9A /* ZenCheck */ = {
+		CA882DB62C7189C5007B7B9A /* Zen */ = {
 			isa = PBXGroup;
 			children = (
 				CAFD49592C7299B300CED77C /* Services */,
@@ -115,13 +115,13 @@
 				CA882DE52C718C2C007B7B9A /* ViewModels */,
 				CA882DE42C718C27007B7B9A /* Views */,
 				CA882DE32C718C1F007B7B9A /* Models */,
-				CA882DB72C7189C5007B7B9A /* ZenCheckApp.swift */,
+				CA882DB72C7189C5007B7B9A /* ZenApp.swift */,
 				CA882DB92C7189C5007B7B9A /* ContentView.swift */,
 				CA882DBB2C7189C5007B7B9A /* Item.swift */,
 				CA882DBD2C7189C8007B7B9A /* Assets.xcassets */,
 				CA882DBF2C7189C8007B7B9A /* Preview Content */,
 			);
-			path = ZenCheck;
+			path = Zen;
 			sourceTree = "<group>";
 		};
 		CA882DBF2C7189C8007B7B9A /* Preview Content */ = {
@@ -132,21 +132,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		CA882DC92C7189C8007B7B9A /* ZenCheckTests */ = {
+		CA882DC92C7189C8007B7B9A /* ZenTests */ = {
 			isa = PBXGroup;
 			children = (
 				CA882DCA2C7189C8007B7B9A /* ZenCheckTests.swift */,
 			);
-			path = ZenCheckTests;
+			path = ZenTests;
 			sourceTree = "<group>";
 		};
-		CA882DD32C7189C8007B7B9A /* ZenCheckUITests */ = {
+		CA882DD32C7189C8007B7B9A /* ZenUITests */ = {
 			isa = PBXGroup;
 			children = (
-				CA882DD42C7189C8007B7B9A /* ZenCheckUITests.swift */,
-				CA882DD62C7189C8007B7B9A /* ZenCheckUITestsLaunchTests.swift */,
+				CA882DD42C7189C8007B7B9A /* ZenUITests.swift */,
+				CA882DD62C7189C8007B7B9A /* ZenUITestsLaunchTests.swift */,
 			);
-			path = ZenCheckUITests;
+			path = ZenUITests;
 			sourceTree = "<group>";
 		};
 		CA882DE32C718C1F007B7B9A /* Models */ = {
@@ -194,9 +194,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CA882DB32C7189C5007B7B9A /* ZenCheck */ = {
+		CA882DB32C7189C5007B7B9A /* Zen */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA882DDA2C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "ZenCheck" */;
+			buildConfigurationList = CA882DDA2C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "Zen" */;
 			buildPhases = (
 				CA882DB02C7189C5007B7B9A /* Sources */,
 				CA882DB12C7189C5007B7B9A /* Frameworks */,
@@ -206,14 +206,14 @@
 			);
 			dependencies = (
 			);
-			name = ZenCheck;
+			name = Zen;
 			productName = ZenCheck;
-			productReference = CA882DB42C7189C5007B7B9A /* ZenCheck.app */;
+			productReference = CA882DB42C7189C5007B7B9A /* Zen.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CA882DC52C7189C8007B7B9A /* ZenCheckTests */ = {
+		CA882DC52C7189C8007B7B9A /* ZenTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA882DDD2C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "ZenCheckTests" */;
+			buildConfigurationList = CA882DDD2C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "ZenTests" */;
 			buildPhases = (
 				CA882DC22C7189C8007B7B9A /* Sources */,
 				CA882DC32C7189C8007B7B9A /* Frameworks */,
@@ -224,14 +224,14 @@
 			dependencies = (
 				CA882DC82C7189C8007B7B9A /* PBXTargetDependency */,
 			);
-			name = ZenCheckTests;
+			name = ZenTests;
 			productName = ZenCheckTests;
-			productReference = CA882DC62C7189C8007B7B9A /* ZenCheckTests.xctest */;
+			productReference = CA882DC62C7189C8007B7B9A /* ZenTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CA882DCF2C7189C8007B7B9A /* ZenCheckUITests */ = {
+		CA882DCF2C7189C8007B7B9A /* ZenUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA882DE02C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "ZenCheckUITests" */;
+			buildConfigurationList = CA882DE02C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "ZenUITests" */;
 			buildPhases = (
 				CA882DCC2C7189C8007B7B9A /* Sources */,
 				CA882DCD2C7189C8007B7B9A /* Frameworks */,
@@ -242,9 +242,9 @@
 			dependencies = (
 				CA882DD22C7189C8007B7B9A /* PBXTargetDependency */,
 			);
-			name = ZenCheckUITests;
+			name = ZenUITests;
 			productName = ZenCheckUITests;
-			productReference = CA882DD02C7189C8007B7B9A /* ZenCheckUITests.xctest */;
+			productReference = CA882DD02C7189C8007B7B9A /* ZenUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -270,7 +270,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CA882DAF2C7189C5007B7B9A /* Build configuration list for PBXProject "ZenCheck" */;
+			buildConfigurationList = CA882DAF2C7189C5007B7B9A /* Build configuration list for PBXProject "Zen" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -283,9 +283,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CA882DB32C7189C5007B7B9A /* ZenCheck */,
-				CA882DC52C7189C8007B7B9A /* ZenCheckTests */,
-				CA882DCF2C7189C8007B7B9A /* ZenCheckUITests */,
+				CA882DB32C7189C5007B7B9A /* Zen */,
+				CA882DC52C7189C8007B7B9A /* ZenTests */,
+				CA882DCF2C7189C8007B7B9A /* ZenUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -330,7 +330,7 @@
 				CAFD495B2C7299C500CED77C /* OpenAIService.swift in Sources */,
 				CAFD49582C72995300CED77C /* SummaryView.swift in Sources */,
 				CA882DEA2C718C76007B7B9A /* TaskViewModel.swift in Sources */,
-				CA882DB82C7189C5007B7B9A /* ZenCheckApp.swift in Sources */,
+				CA882DB82C7189C5007B7B9A /* ZenApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,8 +346,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA882DD72C7189C8007B7B9A /* ZenCheckUITestsLaunchTests.swift in Sources */,
-				CA882DD52C7189C8007B7B9A /* ZenCheckUITests.swift in Sources */,
+				CA882DD72C7189C8007B7B9A /* ZenUITestsLaunchTests.swift in Sources */,
+				CA882DD52C7189C8007B7B9A /* ZenUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,12 +356,12 @@
 /* Begin PBXTargetDependency section */
 		CA882DC82C7189C8007B7B9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CA882DB32C7189C5007B7B9A /* ZenCheck */;
+			target = CA882DB32C7189C5007B7B9A /* Zen */;
 			targetProxy = CA882DC72C7189C8007B7B9A /* PBXContainerItemProxy */;
 		};
 		CA882DD22C7189C8007B7B9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CA882DB32C7189C5007B7B9A /* ZenCheck */;
+			target = CA882DB32C7189C5007B7B9A /* Zen */;
 			targetProxy = CA882DD12C7189C8007B7B9A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -493,7 +493,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ZenCheck/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Zen/Preview Content\"";
 				DEVELOPMENT_TEAM = 82M85JU52Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -529,7 +529,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ZenCheck/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Zen/Preview Content\"";
 				DEVELOPMENT_TEAM = 82M85JU52Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -579,7 +579,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZenCheck.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZenCheck";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zen.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Zen";
 			};
 			name = Debug;
 		};
@@ -604,7 +604,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZenCheck.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZenCheck";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zen.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Zen";
 			};
 			name = Release;
 		};
@@ -657,7 +657,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CA882DAF2C7189C5007B7B9A /* Build configuration list for PBXProject "ZenCheck" */ = {
+		CA882DAF2C7189C5007B7B9A /* Build configuration list for PBXProject "Zen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA882DD82C7189C8007B7B9A /* Debug */,
@@ -666,7 +666,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA882DDA2C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "ZenCheck" */ = {
+		CA882DDA2C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "Zen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA882DDB2C7189C8007B7B9A /* Debug */,
@@ -675,7 +675,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA882DDD2C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "ZenCheckTests" */ = {
+		CA882DDD2C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "ZenTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA882DDE2C7189C8007B7B9A /* Debug */,
@@ -684,7 +684,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA882DE02C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "ZenCheckUITests" */ = {
+		CA882DE02C7189C8007B7B9A /* Build configuration list for PBXNativeTarget "ZenUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA882DE12C7189C8007B7B9A /* Debug */,
